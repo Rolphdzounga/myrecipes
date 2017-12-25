@@ -1,10 +1,10 @@
-$navbar-default-bg: #0d182b;
+$navbar-default-bg: #202e44;
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
 #logo {
   float: left;
-  font-size: 1.7em;
+  font-size: 1.3em;
   color: #fff;
   text-transform: uppercase;
   letter-spacing: -1px;
@@ -32,5 +32,47 @@ $navbar-default-bg: #0d182b;
   background-image: asset-url('p2.jpg');
   background-size: cover;
   height: 300px;
-  color:black;
+  color:#fff;
+}
+
+footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid #eaeaea;
+  color: #777;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+
+footer a {
+  color: #555;
+}
+
+footer a:hover {
+  color: #222;
+}
+
+footer small {
+  float: left;
+}
+
+footer ul {
+  float: right;
+  list-style: none;
+}
+
+footer ul li {
+  float: left;
+  margin-left: 15px;
+}
+
+.btn-xlarge {
+  background-color: #202e44;
+  color: #fff;
+}
+
+.btn-xlarge:hover {
+  color: #fff;
+  text-decoration: none;
 }
