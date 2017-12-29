@@ -7,5 +7,5 @@ class Chef < ApplicationRecord
                     length: {minimum: 3, maximum: 25,message:"Un email doit avoir 3 caractères minimum et 25 au maximum..."},
                     format:{with: VALID_EMAIL_REGEX} , uniqueness: { case_sensitive: false }
 
-
+    has_many :recettes
 end

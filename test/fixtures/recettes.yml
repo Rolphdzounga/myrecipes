@@ -1,13 +1,16 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  description: MyText
+  name: "brochettes de poisson"
+  description: "recuperer le filet de capitaine - decouper le filet en carré régulier - mariner"
+  chef: chefs(:valid)
 
 two:
-  name: MyString
-  description: MyText
+  name: "riz rouge"
+  description: "laver le riz parfumé"
+  chef: chefs(:valid)
 
 valid:
   name: "bouillon de poisson"
   description: "step1 ecailler le poisson step2..."
+  chef: chefs(:valid)

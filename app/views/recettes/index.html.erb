@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<h1 align="center">Listing des Recettes</h1>
+<hr>
+
+<% @recettes.each do |recette| %>
+<div class="row">
+  <div class="col-md-2">
+    <section class="center">
+      
+    </section>
+  </div>
+  <div class="col-md-8 well">
+    <h4><%= recette.name %></h4>
+    <p><%= truncate(recette.description ,length:150) %></p>
+    <p> <span class="quiet"><small> depuis <%= time_ago_in_words recette.created_at %></small> </span></p>
+    
+  </div>
+</div>
+<% end %>
+ <!--
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @recettes.each do |recette| %>
+      <tr>
+        <td><%= recette.name %></td>
+        <td><%= recette.description %></td>
+        <td> <small><%= time_ago_in_words recette.created_at %></small> </td>
+        <td><%= link_to 'Show', recette %></td>
+        <td><%= link_to 'Edit', edit_recette_path(recette) %></td>
+        <td><%= link_to 'Destroy', recette, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Recette', new_recette_path %>
+
+-->
