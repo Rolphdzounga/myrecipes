@@ -6,10 +6,35 @@ class RecetteTest < Capybara::Rails::TestCase
     @two = recettes :two
  end
 
-  test 'page recetts index' do
+  test 'page recettes index' do
     visit recettes_path
-    assert_content "Aicha"
-    assert page.has_content?(@one.name)
-    assert page.has_content?(@two.name)
+    refute_content "Aicha"
+    assert page.has_link? @one.name 
+    assert page.has_link? @two.name 
   end
+
+  test "visite recette show page" do
+  	visit recette_path(@one)
+  	assert_content @one.name.capitalize
+  	assert_content @one.description
+  	assert_content @one.chef.chefname.capitalize
+  end
+
+
+  test 'writing a new Recette' do
+    visit new_recette_path
+
+    # click_on 'New Post'
+
+    fill_in 'recette_name', with: 'Test Title'
+    fill_in 'recette_description',  with: 'Test Body'
+
+    click_on 'Create Recette'
+
+    assert_current_path recette_path(Recette.last)
+    assert_content "Test Title".capitalize
+    assert page.has_content?('Test Body')
+    assert_content "Etapes"
+  end
+
 end

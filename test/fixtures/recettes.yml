@@ -1,16 +1,19 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  id: 1
   name: "brochettes de poisson"
   description: "recuperer le filet de capitaine - decouper le filet en carré régulier - mariner"
-  chef: chefs(:valid)
+  chef_id: 3
 
 two:
+  id: 2
   name: "riz rouge"
   description: "laver le riz parfumé"
-  chef: chefs(:valid)
+  chef_id: 3
 
 valid:
+  id: 3
   name: "bouillon de poisson"
   description: "step1 ecailler le poisson step2..."
-  chef: chefs(:valid)
+  chef_id: 3

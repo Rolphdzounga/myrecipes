@@ -13,13 +13,13 @@ describe RecettesController do
     value(response).must_be :success?
   end
 
-  it "creates recette" do
-    expect {
-      post recettes_url, params: { recette: { description: recette.description, name: recette.name } }
-    }.must_change "Recette.count"
+  # it "creates recette" do
+  #   expect {
+  #     post recettes_url, params: { recette: { description: recette.description, name: recette.name } }
+  #   }.must_change "Recette.count"
 
-    must_redirect_to recette_path(Recette.last)
-  end
+  #   must_redirect_to recette_path(Recette.last)
+  # end
 
   it "shows recette" do
     get recette_url(recette)

@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class RecetteTest < ActiveSupport::TestCase
+class RecetteTest1 < ActiveSupport::TestCase
 	def setup
 		@recette = recettes(:valid)
 		ressource = @recette

@@ -5,11 +5,19 @@ class RecettesController < ApplicationController
   # GET /recettes.json
   def index
     @recettes = Recette.all
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   # GET /recettes/1
   # GET /recettes/1.json
   def show
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   # GET /recettes/new
@@ -25,7 +33,7 @@ class RecettesController < ApplicationController
   # POST /recettes.json
   def create
     @recette = Recette.new(recette_params)
-
+    @recette.chef = Chef.first
     respond_to do |format|
       if @recette.save
         format.html { redirect_to @recette, notice: 'Recette was successfully created.' }

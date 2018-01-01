@@ -1,3 +1,22 @@
+<%= render 'shared/page_title', title:@recette.name %>
+
+
+
+<div class="well col-md-8 col-md-offset-2">
+	<h4 class="center description"><strong>Etapes: </strong></h4>
+	<hr>
+	<%= simple_format @recette.description %>
+	<hr>
+	<div class="pull-right">
+		<p class="center"><em>Creer par : </em></p>
+		<p class="center"> <%= link_to gravatar_for(@recette.chef), recettes_path  %> </p>
+		<p><small><%= @recette.chef.chefname.capitalize%></small></p>
+		<div class="pull-right">créé depuis : <%= time_ago_in_words(@recette.created_at) %></div>
+	</div>
+</div>
+
+
+<!--
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -12,3 +31,4 @@
 
 <%= link_to 'Edit', edit_recette_path(@recette) %> |
 <%= link_to 'Back', recettes_path %>
+-->

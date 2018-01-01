@@ -1,17 +1,16 @@
 <p id="notice"><%= notice %></p>
 
-<h1 align="center">Listing des Recettes</h1>
-<hr>
+<%= render 'shared/page_title',title:"Listing des Recettes" %>
 
 <% @recettes.each do |recette| %>
 <div class="row">
   <div class="col-md-2">
-    <section class="center">
-      
+    <section class="chef_info center">
+      <%= gravatar_for(recette.chef, size:120) %>
     </section>
   </div>
   <div class="col-md-8 well">
-    <h4><%= recette.name %></h4>
+    <h4><%= link_to recette.name, recette_path(recette) %></h4>
     <p><%= truncate(recette.description ,length:150) %></p>
     <p> <span class="quiet"><small> depuis <%= time_ago_in_words recette.created_at %></small> </span></p>
     
