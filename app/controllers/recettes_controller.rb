@@ -36,7 +36,7 @@ class RecettesController < ApplicationController
     @recette.chef = Chef.first
     respond_to do |format|
       if @recette.save
-        format.html { redirect_to @recette, notice: 'Recette was successfully created.' }
+        format.html { redirect_to @recette, :flash =>{success:"La récette a été bien enregistrée"} }
         format.json { render :show, status: :created, location: @recette }
       else
         format.html { render :new }

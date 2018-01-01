@@ -1,0 +1,10 @@
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<% flash.each do |n,m|  %>
+			<div class="alert alert-<%= n %> center">
+				<a href="#" class="close" data-dismiss="alert">&#215;</a>
+				<%= m %>
+			</div>
+		<%end%>
+	</div>
+</div>
