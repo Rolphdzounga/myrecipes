@@ -13,22 +13,11 @@
 		<p><small><%= @recette.chef.chefname.capitalize%></small></p>
 		<div class="pull-right">créé depuis : <%= time_ago_in_words(@recette.created_at) %></div>
 	</div>
+	<div class="recette_actions">
+		<%= link_to "Mettre à jour cette recette",edit_recette_path(@recette),class:"btn btn-xs btn-warning" %>
+		<%= link_to "Supprimer cette recette", recette_path(@recette),method: :delete,
+		                                     data:{confirm:"Validez la suppression"},class:"btn btn-xs btn-danger" %>
+	</div>
 </div>
 
 
-<!--
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @recette.name %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @recette.description %>
-</p>
-
-<%= link_to 'Edit', edit_recette_path(@recette) %> |
-<%= link_to 'Back', recettes_path %>
--->

@@ -50,7 +50,7 @@ class RecettesController < ApplicationController
   def update
     respond_to do |format|
       if @recette.update(recette_params)
-        format.html { redirect_to @recette, notice: 'Recette was successfully updated.' }
+        format.html { redirect_to @recette, :flash =>{success:"La récette a été bien enregistrée"} }
         format.json { render :show, status: :ok, location: @recette }
       else
         format.html { render :edit }
@@ -64,7 +64,7 @@ class RecettesController < ApplicationController
   def destroy
     @recette.destroy
     respond_to do |format|
-      format.html { redirect_to recettes_url, notice: 'Recette was successfully destroyed.' }
+      format.html { redirect_to recettes_url,:flash =>{success:"La récette a été supprimée"}  }
       format.json { head :no_content }
     end
   end
