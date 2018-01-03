@@ -20,6 +20,7 @@ class RecetteTest < Capybara::Rails::TestCase
   	assert_content @one.chef.chefname.capitalize
     assert page.has_link? "Mettre à jour cette recette"
     assert page.has_link? "Supprimer cette recette"
+    assert page.has_link? "Retourner à la liste des recettes"
   end
 
 

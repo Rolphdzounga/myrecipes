@@ -7,8 +7,8 @@ module ApplicationHelper
   end
 
   def fct txt
-	m = txt
-	z = m.truncate_words 1, omission:""
-	ok = m.remove z
+  	origine = txt
+  	mot = origine.truncate_words 1, omission:"" #LE MOT A ENLEVER
+  	ok = origine.remove mot
   end
 end
