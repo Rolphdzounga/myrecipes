@@ -30,7 +30,7 @@ class RecetteEditTest < Capybara::Rails::TestCase
 
     # assert_current_path "recettes/edit"
     page.assert_selector('div.alert-success')
-    assert_content 'beignets'.capitalize
+    assert_content 'beignets'.titleize
     assert_content 'eplucher la banane...'
    end
 

@@ -9,7 +9,7 @@
 	<hr>
 	<div class="pull-right">
 		<p class="center"><em>Creer par : </em></p>
-		<p class="center"> <%= link_to gravatar_for(@recette.chef), recettes_path  %> </p>
+		<p class="center"> <%= link_to (gravatar_for(@recette.chef)), chef_path(@recette.chef) %> </p>
 		<p><small><%= @recette.chef.chefname.titleize%></small></p>
 		<div class="pull-right">créé depuis : <%= time_ago_in_words(@recette.created_at) %></div>
 	</div>

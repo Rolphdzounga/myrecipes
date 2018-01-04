@@ -20,9 +20,9 @@ class ChefSignupTest < Capybara::Rails::TestCase
     click_on 'Créer mon compte'
 
      
-    # assert (page.current_path.eql? "/signup")
-    page.assert_selector('h2.panel-title')
-    page.assert_selector('div.panel-body')
+    page.has_xpath? "/signup"
+    assert page.assert_selector('h2.panel-title')
+    assert page.assert_selector('div.panel-body')
    end
   test 'Accepte enregistrement valide de chef' do
     visit signup_path
@@ -32,8 +32,8 @@ class ChefSignupTest < Capybara::Rails::TestCase
     fill_in 'chef_password', with: '123456'
     fill_in 'password_confirmation',  with: '123456'
     click_on 'Créer mon compte'
-    # assert_current_path "recettes/edit"
-    page.assert_selector('div.alert-success')
+    # assert page.current_url
+    assert page.assert_selector('div.alert-success')
     assert_content 'a'*5
    end
 

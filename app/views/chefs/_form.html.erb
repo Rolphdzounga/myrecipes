@@ -44,7 +44,7 @@
 
 
   <div class="form-group">
-    <div class="col-md-2 col-md-offset-2"><%= form.submit "Créer mon compte", class:"btn btn-primary btn-lg btn-xlarge" %></div>
+    <div class="col-md-2 col-md-offset-2"><%= form.submit (params[:action]=="new" ? "Créer mon compte": "Mettre à jour mon profile"), class:"btn btn-primary btn-lg btn-xlarge" %></div>
     
   </div>
 <% end %>
