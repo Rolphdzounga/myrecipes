@@ -1,0 +1,59 @@
+<div class="row">
+  <div class="col-md-12">
+ 
+<%= form_for(chef, :html => {class:"form-horizontal",role:"form"}, local: true) do |form| %>
+
+
+<div class="form-group">
+  <div class="control-label col-md-2">
+    <%= form.label :"Nom du Chef" %>
+  </div>
+  <div class="col-md-8">
+    <%= form.text_field :chefname, id: :chef_name, class:"form-control",placeholder:"Entrez votre nom", autofocus:true %>
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="control-label col-md-2">
+    <%= form.label :email %>
+  </div>
+  <div class="col-md-8">
+    <%= form.email_field :email, id: :chef_email, class:"form-control",placeholder:"Entrez votre email" %>
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="control-label col-md-2">
+    <%= form.label :password %>
+  </div>
+  <div class="col-md-8">
+    <%= form.password_field :password, id: :chef_password, class:"form-control",placeholder:"Entrez votre mot de passe" %>
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="control-label col-md-2">
+    <%= form.label :confirmation %>
+  </div>
+  <div class="col-md-8">
+    <%= form.password_field :password_confirmation, id: :password_confirmation, class:"form-control",placeholder:"Saisir à nouveau le mot de passe" %>
+  </div>
+</div>
+
+
+
+
+  <div class="form-group">
+    <div class="col-md-2 col-md-offset-2"><%= form.submit "Créer mon compte", class:"btn btn-primary btn-lg btn-xlarge" %></div>
+    
+  </div>
+<% end %>
+
+
+
+      
+
+  </div>
+</div>
+
+ 

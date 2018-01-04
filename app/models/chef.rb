@@ -8,4 +8,9 @@ class Chef < ApplicationRecord
                     format:{with: VALID_EMAIL_REGEX} , uniqueness: { case_sensitive: false }
 
     has_many :recettes
+
+    has_secure_password
+
+    validates :password, presence: {message:"le mot de passe est obligatoire..."},
+                    length: {minimum: 5, maximum: 25,message:"Un mot de passe doit avoir 5 caractères minimum et 25 au maximum..."}
 end

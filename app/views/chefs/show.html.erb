@@ -1,0 +1,24 @@
+<%= render 'shared/page_title', title:"Votre Espace Privé" %>
+
+<p>
+  <strong>Chefname:</strong>
+  <%= @chef.chefname %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @chef.email %>
+</p>
+
+<p>
+  <strong>Password:</strong>
+  <%= @chef.password %>
+</p>
+
+<p>
+  <strong>Password confirmation:</strong>
+  <%= @chef.password_confirmation %>
+</p>
+
+<%= link_to 'Edit', edit_chef_path(@chef) %> |
+<%= link_to 'Back', chefs_path %>

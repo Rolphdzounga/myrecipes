@@ -1,0 +1,6 @@
+<%= render 'shared/page_title', title:"Créez votre compte ici" %>
+<%= render 'shared/errors', obj:@chef %>
+<%= render 'form', chef: @chef %>
+
+
+<div class="col-md-4 col-md-offset-4 colormatch">[   <%= link_to "Annuler et retourner à la liste des recettes", recettes_path %> ]</div>

@@ -3,6 +3,7 @@ require 'test_helper'
 class ChefTest < ActiveSupport::TestCase
 	def setup
 		@chef = chefs (:valid)
+		@chef.password = "123456"
 	end
 
 	test "un chef valide" do
@@ -46,5 +47,15 @@ class ChefTest < ActiveSupport::TestCase
 		@chef.email = email_test
 		@chef.save
 		assert_equal email_test.downcase,@chef.reload.email, "le site ne transforme pas le mail en minuscule..."
+	end
+
+	test "le password est obligatoire" do
+		@chef.password = @chef.password_confirmation = " "
+		refute @chef.valid?
+	end
+
+	test "le password > 5 caractères" do
+		@chef.password = @chef.password_confirmation = "a"*4
+		refute @chef.valid?, "ne block pas les pwd < 5 c"
 	end
 end
