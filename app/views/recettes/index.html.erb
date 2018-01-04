@@ -3,32 +3,3 @@
 <%= render 'shared/page_title',title:"Listing des Recettes" %>
 
 <%= render 'recettes' %>
- <!--
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @recettes.each do |recette| %>
-      <tr>
-        <td><%= recette.name %></td>
-        <td><%= recette.description %></td>
-        <td> <small><%= time_ago_in_words recette.created_at %></small> </td>
-        <td><%= link_to 'Show', recette %></td>
-        <td><%= link_to 'Edit', edit_recette_path(recette) %></td>
-        <td><%= link_to 'Destroy', recette, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Recette', new_recette_path %>
-
--->
