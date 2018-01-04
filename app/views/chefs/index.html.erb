@@ -1,32 +1,23 @@
-<p id="notice"><%= notice %></p>
+<%= render 'shared/page_title', title:"Répertoire des chefs" %>
 
-<h1>Chefs</h1>
+<div class="row">
 
-<table>
-  <thead>
-    <tr>
-      <th>Chefname</th>
-      <th>Email</th>
-      <th>Password</th>
-      <th>Password confirmation</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <% @chefs.each do |chef| %>
+    <div class="col-md-4 col-md-offset-4 well">
+      <section class="center">
+        <%= link_to (gravatar_for chef,size:130), chef_path(chef)  %>
+      </section>
 
-  <tbody>
-    <% @chefs.each do |chef| %>
-      <tr>
-        <td><%= chef.chefname %></td>
-        <td><%= chef.email %></td>
-        <td><%= chef.password %></td>
-        <td><%= chef.password_confirmation %></td>
-        <td><%= link_to 'Show', chef %></td>
-        <td><%= link_to 'Edit', edit_chef_path(chef) %></td>
-        <td><%= link_to 'Destroy', chef, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      <h4 align="center"><%= link_to chef.chefname.titleize, chef_path(chef), class:"name_color" %></h4>
 
-<br>
+      <section class="center">
+        <small align="center"><%= pluralize chef.recettes.count, "recette"%> à son actif  </small>
+      </section>
+    </div>
+  <%end%>
+</div>
 
+
+<div class="col-md-4 col-md-offset-4 colormatch center">
+  [   <%= link_to "Consulter à la liste des recettes", recettes_path %> ]
+</div>

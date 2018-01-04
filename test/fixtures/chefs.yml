@@ -1,14 +1,16 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  chefname: MyString
-  email: MyString
+  id: 1
+  chefname: ghislain
+  email: ghislain@gmail.com
 
 two:
-  chefname: MyString
-  email: MyString
+  id: 2
+  chefname: maixant
+  email: maix@bnpparibas.com
 
 valid:
   id: 3
-  chefname: rolph
+  chefname: rodrigue
   email: rolphfrancel@gmail.com
