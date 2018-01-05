@@ -4,7 +4,7 @@ class RecettesController < ApplicationController
   # GET /recettes
   # GET /recettes.json
   def index
-    @recettes = Recette.all
+    @recettes = Recette.paginate(page: params[:page],per_page:3)
     respond_to do |format|
       format.html
       format.json

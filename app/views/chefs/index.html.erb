@@ -1,5 +1,7 @@
 <%= render 'shared/page_title', title:"Répertoire des chefs" %>
 
+<%= render 'shared/willpaginate', obj: @chefs %>
+
 <div class="row">
 
   <% @chefs.each do |chef| %>
@@ -17,6 +19,7 @@
   <%end%>
 </div>
 
+<%= render 'shared/willpaginate', obj: @chefs %>
 
 <div class="col-md-4 col-md-offset-4 colormatch center">
   [   <%= link_to "Consulter à la liste des recettes", recettes_path %> ]

@@ -16,7 +16,12 @@
 <h4 align=center> les recettes de <%= @chef.chefname%></h4>
 
 <%if @chef.recettes.any? %>
+
+	<%= render 'shared/willpaginate',obj:@recettes %>
+
 	<%= render 'recettes/recettes' %>
+
+	<%= render 'shared/willpaginate',obj:@recettes %>
 <%else%>
 	<hr>
 	<div class="row center">

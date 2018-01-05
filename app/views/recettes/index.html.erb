@@ -2,4 +2,9 @@
 
 <%= render 'shared/page_title',title:"Listing des Recettes" %>
 
+
+<%= render 'shared/willpaginate',obj:@recettes %>
+
 <%= render 'recettes' %>
+
+<%= render 'shared/willpaginate',obj:@recettes %>
