@@ -20,5 +20,10 @@ class RecetteTest < Capybara::Rails::TestCase
     assert page.has_link?(@deux.chefname.titleize)
   end
 
+  test 'suppression des chefs' do
+    visit chefs_path
+    page.assert_selector('a.btn-danger', :count => 3)
+    # first('.well').click_link('Supprimer mon compte')
+  end
 
 end

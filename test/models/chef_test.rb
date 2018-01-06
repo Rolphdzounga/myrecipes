@@ -58,4 +58,13 @@ class ChefTest < ActiveSupport::TestCase
 		@chef.password = @chef.password_confirmation = "a"*4
 		refute @chef.valid?, "ne block pas les pwd < 5 c"
 	end
+
+	test "suppression du chef et ses recettes " do
+		@chef.save
+		@chef.recettes.create!(name:"recettes test", description:"description test")
+		assert_difference 'Recette.count', -4 do
+			@chef.destroy
+		end
+
+	end
 end
