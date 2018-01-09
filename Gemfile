@@ -43,6 +43,9 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
   gem 'sqlite3'
+  gem 'irbtools'
+  gem 'table_print'
+  gem 'awesome_print'
 end
 
 group :development do
@@ -56,6 +59,7 @@ end
 
 group :production do
   gem 'pg'
+  gem 'irbtools'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -71,6 +75,3 @@ group :test do
 end
 
 
-gem 'irbtools'
-gem 'table_print'
-gem 'awesome_print'
