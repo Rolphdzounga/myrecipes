@@ -26,7 +26,7 @@ class RecetteTest1 < ActiveSupport::TestCase
 		@recette.description = nil
 		refute @recette.valid?,"donc une recette sans description est valide"
 		assert_not_nil  @recette.errors[:description], "l'attribut description nil est valide"
-		@recette.description = "a"*401
+		@recette.description = "a"*2501
 		refute @recette.valid?,"donc une description de recette ayant plus de 400 caractères est tolérée"
 	end
   private

@@ -14,8 +14,10 @@
 
       <div class="recette_actions center">
         <%= link_to "Mettre à jour le compte",edit_chef_path(chef),class:"btn btn-xs btn-warning" %>
-        <%= link_to "Supprimer le compte", chef_path(chef),method: :delete,
-                                             data:{confirm:"Validez la suppression"},class:"btn btn-xs btn-danger" %>
+        <%if logged_in? && current_user.admin? && !chef.admin? %>
+          <%= link_to "Supprimer le compte", chef_path(chef),method: :delete,
+                                               data:{confirm:"Validez la suppression"},class:"btn btn-xs btn-danger" %>
+        <%end%>
       </div>
 
       <section class="center">

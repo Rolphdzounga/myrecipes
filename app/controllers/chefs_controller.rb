@@ -1,5 +1,6 @@
 class ChefsController < ApplicationController
   before_action :set_chef, only: [:show, :edit, :update, :destroy]
+  before_action :require_same_user, only: [:edit,:update,:destroy]
 
   # GET /chefs
   # GET /chefs.json
@@ -29,6 +30,7 @@ class ChefsController < ApplicationController
 
     respond_to do |format|
       if @chef.save
+        session[:chef_id] = @chef.id
         format.html { redirect_to @chef, :flash =>{success:"Bienvenue #{@chef.chefname} sur Myrecipes App!"}}
         format.json { render :show, status: :created, location: @chef }
       else
@@ -55,11 +57,13 @@ class ChefsController < ApplicationController
   # DELETE /chefs/1
   # DELETE /chefs/1.json
   def destroy
-    @chef.destroy
-    respond_to do |format|
-      format.html { redirect_to chefs_url,:flash =>{success:"Le compte a été supprimé avec succès"}}
-      format.json { head :no_content }
-    end
+    if !@chef.admin?
+        @chef.destroy
+        respond_to do |format|
+          format.html { redirect_to chefs_url,:flash =>{success:"Le compte a été supprimé avec succès"}}
+          format.json { head :no_content }
+        end
+   end
   end
 
   private
@@ -71,5 +75,12 @@ class ChefsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def chef_params
       params.require(:chef).permit(:chefname, :email, :password, :password_confirmation)
+    end
+
+    def require_same_user
+      if logged_in? && current_user != @chef && !current_user.admin?
+        flash[:danger] = "Vous ne pouvez modifier d'autres profiles en dehors du votre"
+        redirect_to root_path
+      end
     end
 end

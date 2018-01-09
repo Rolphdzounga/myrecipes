@@ -3,10 +3,14 @@ require "test_helper"
 class RecetteEditTest < Capybara::Rails::TestCase
  def setup
     @one = recettes :one
+    @valid = chefs :valid
+    @valid = init_user_admin @valid
+    @valid.save
  end
 
 
   test 'Reject invalid Recette update' do
+    login_user @valid,'123456'
     visit edit_recette_path(@one)
 
     fill_in 'recette_name', with: ''
@@ -21,6 +25,7 @@ class RecetteEditTest < Capybara::Rails::TestCase
   end
 
   test 'Accepte valid Recette update' do
+    login_user @valid,'123456'
     visit edit_recette_path(@one)
 
     fill_in 'recette_name', with: 'beignets'

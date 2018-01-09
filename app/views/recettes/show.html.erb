@@ -14,9 +14,11 @@
 		<div class="pull-right">créé depuis : <%= time_ago_in_words(@recette.created_at) %></div>
 	</div>
 	<div class="recette_actions">
-		<%= link_to "Mettre à jour cette recette",edit_recette_path(@recette),class:"btn btn-xs btn-warning" %>
-		<%= link_to "Supprimer cette recette", recette_path(@recette),method: :delete,
-		                                     data:{confirm:"Validez la suppression"},class:"btn btn-xs btn-danger" %>
+		<%if logged_in? && (current_user == @recette.chef) || (current_user.admin? if current_user) %>
+			<%= link_to "Mettre à jour cette recette",edit_recette_path(@recette),class:"btn btn-xs btn-warning" %>
+			<%= link_to "Supprimer cette recette", recette_path(@recette),method: :delete,
+			                                     data:{confirm:"Validez la suppression"},class:"btn btn-xs btn-danger" %>
+		<%end%>
 		<%= link_to "Retourner à la liste des recettes",recettes_path,class:"btn btn-xs btn-primary" %>
 	</div>
 </div>

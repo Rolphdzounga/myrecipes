@@ -1,6 +1,7 @@
 class RecettesController < ApplicationController
   before_action :set_recette, only: [:show, :edit, :update, :destroy]
-
+  before_action :require_user, except: [:index,:show]
+  before_action :require_same_user, only: [:edit,:update,:destroy]
   # GET /recettes
   # GET /recettes.json
   def index
@@ -33,7 +34,7 @@ class RecettesController < ApplicationController
   # POST /recettes.json
   def create
     @recette = Recette.new(recette_params)
-    @recette.chef = Chef.first
+    @recette.chef = current_user
     respond_to do |format|
       if @recette.save
         format.html { redirect_to @recette, :flash =>{success:"La récette a été bien enregistrée"} }
@@ -78,5 +79,12 @@ class RecettesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def recette_params
       params.require(:recette).permit(:name, :description)
+    end
+
+    def require_same_user
+      if logged_in? && current_user != @recette.chef && !current_user.admin?
+        flash[:danger] = "Vous ne pouvez agir sur d'autres recettes en dehors des votres "
+        redirect_to chefs_path
+      end
     end
 end
