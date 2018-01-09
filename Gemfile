@@ -70,3 +70,7 @@ group :test do
   gem "minitest-rails-capybara"
 end
 
+
+gem 'irbtools'
+gem 'table_print'
+gem 'awesome_print'
