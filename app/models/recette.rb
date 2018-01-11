@@ -6,5 +6,9 @@ class Recette < ApplicationRecord
     belongs_to :chef
     validates :chef_id, presence: {message:"vous devez etre connecté pour créer une recette..."}
 
-    default_scope -> {order(updated_at: :desc)}
+    default_scope -> {order(updated_at: :desc)} #ORDRE D AFFICHAGE
+
+	has_many :recette_ingredients
+	has_many :ingredients, through: :recette_ingredients
+
 end
