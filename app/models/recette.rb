@@ -11,4 +11,5 @@ class Recette < ApplicationRecord
 	has_many :recette_ingredients
 	has_many :ingredients, through: :recette_ingredients
 
+	has_many :commentaires, dependent: :destroy
 end

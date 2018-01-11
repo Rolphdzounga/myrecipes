@@ -13,4 +13,6 @@ class Chef < ApplicationRecord
 
     validates :password, presence: {message:"le mot de passe est obligatoire..."},
                     length: {minimum: 5, maximum: 25,message:"Un mot de passe doit avoir 5 caractères minimum et 25 au maximum..."}
+
+    has_many :commentaires, dependent: :destroy
 end
