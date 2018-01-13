@@ -1,0 +1,35 @@
+<%= render 'shared/page_title', title:"Répertoire des Ingredients" %>
+
+<%= render 'shared/willpaginate', obj: @ingredients %>
+
+<div class="row">
+
+  <% @ingredients.each do |ingredient| %>
+    <div class="col-md-4 col-md-offset-4 well">
+
+      <h4 align="center"><%= link_to ingredient.name.titleize, ingredient_path(ingredient), class:"name_color" %></h4>
+
+      <div class="recette_actions center">
+        <%#if logged_in? && current_user.admin? && !ingredient.admin? %>
+
+        <%if logged_in? && (current_user.admin? if current_user)%>
+          <%= link_to "Mettre à jour l'ingredient",edit_ingredient_path(ingredient),class:"btn btn-xs btn-warning" %>
+
+          <%= link_to "Supprimer l'ingredient", ingredient_path(ingredient),method: :delete,
+                                               data:{confirm:"Validez la suppression"},class:"btn btn-xs btn-danger" %>
+        <%end%>
+      </div>
+
+      <section class="center">
+        <small align="center"><%= pluralize(ingredient.recettes.count, "recette") %> </small>
+      </section>
+    </div>
+  <%end%>
+</div>
+
+<%= render 'shared/willpaginate', obj: @ingredients %>
+
+<div class="col-md-4 col-md-offset-4 colormatch center">
+  [   <%= link_to "Consulter à la liste des recettes", recettes_path %> ]
+</div>
+

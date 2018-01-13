@@ -1,0 +1,33 @@
+<%= render 'shared/page_title', title:"Détails de l'ingredient  #{(tag.strong @ingredient.name)} " %>
+
+<div class="row">
+	<div class="col-md-4 col-md-offset-4 center">
+		<%#= gravatar_for @chef , size:150%>
+	</div>
+</div>
+
+<div class="recette_actions center">
+	<%if logged_in? && (current_user.admin? if current_user)%>
+	<%= link_to "Mettre l'ingredient",edit_ingredient_path(@ingredient),class:"btn btn-xs btn-warning" %>
+	<%= link_to "Supprimer l'ingredient", ingredient_path(@ingredient),method: :delete,
+	                                     data:{confirm:"Validez la suppression"},class:"btn btn-xs btn-danger" %>
+	<%= link_to "lister toutes les ingredients",ingredients_path,class:"btn btn-xs btn-primary" %>
+	<hr>
+	<%end%>
+</div>
+
+<h4 align=center> les recettes comprenant l'ingredient</h4>
+
+<%if @recettes.size > 0 %>
+
+	<%= render 'shared/willpaginate',obj:@recettes %>
+
+	<%= render 'recettes/recettes' %>
+
+	<%= render 'shared/willpaginate',obj:@recettes %>
+<%else%>
+	<hr>
+	<div class="row center">
+		<em><small>pas encore de recettes</small></em>
+	</div>
+<%end%>

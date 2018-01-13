@@ -7,6 +7,9 @@
 	<hr>
 	<%= simple_format @recette.description %>
 	<hr>
+	<% if @recette.ingredients.any? %>
+        <p>Ingredients: <%= render @recette.ingredients %></p>
+    <%end%>
 	<div class="pull-right">
 		<p class="center"><em>Creer par : </em></p>
 		<p class="center"> <%= link_to (gravatar_for(@recette.chef)), chef_path(@recette.chef) %> </p>

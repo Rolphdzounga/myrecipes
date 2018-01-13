@@ -8,7 +8,10 @@
   <div class="col-md-8 well">
     <h4><%= link_to recette.name, recette_path(recette) %></h4>
     <p><%= truncate(recette.description ,length:150) %></p>
-    <p> <span class="quiet"><small> depuis <%= time_ago_in_words recette.created_at %></small> </span></p>
+    <% if recette.ingredients.any? %>
+        <p>Ingredients: <%= render recette.ingredients %></p>
+    <%end%>
+    <p> <span class="quiet"><small> depuis <%= time_ago_in_words recette.created_at %> par <%= recette.chef.chefname.titleize %></small> </span></p>
     <div class="recette_actions">
       <%if logged_in? && (current_user == recette.chef) || (current_user.admin? if current_user) %>
         <%= link_to "Mettre à jour cette recette",edit_recette_path(recette),class:"btn btn-xs btn-warning" %>

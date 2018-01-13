@@ -7,10 +7,12 @@
 </div>
 
 <div class="recette_actions center">
+	<%if logged_in? && (current_user == @chef) || (current_user.admin? if current_user)%>
 	<%= link_to "Mettre à jour mon compte",edit_chef_path(@chef),class:"btn btn-xs btn-warning" %>
 	<%= link_to "Supprimer mon compte", chef_path(@chef),method: :delete,
 	                                     data:{confirm:"Validez la suppression"},class:"btn btn-xs btn-danger" %>
 	<%= link_to "lister toutes les recettes",recettes_path,class:"btn btn-xs btn-primary" %>
+	<%end%>
 </div>
 
 <h4 align=center> les recettes de <%= @chef.chefname%></h4>
