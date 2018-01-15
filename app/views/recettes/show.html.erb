@@ -14,7 +14,9 @@
 		<p class="center"><em>Creer par : </em></p>
 		<p class="center"> <%= link_to (gravatar_for(@recette.chef)), chef_path(@recette.chef) %> </p>
 		<p><small><%= @recette.chef.chefname.titleize%></small></p>
-		<div class="pull-right">créé depuis : <%= time_ago_in_words(@recette.created_at) %></div>
+		<div class="pull-right"><span class="quite"><small>créé depuis : <%= time_ago_in_words(@recette.created_at) %>
+			                                   | <%= pluralize(@recette.commentaires.count, "commentaire") %> 
+		</small></span></div>
 	</div>
 	<div class="recette_actions">
 		<%if logged_in? && (current_user == @recette.chef) || (current_user.admin? if current_user) %>
@@ -26,4 +28,42 @@
 	</div>
 </div>
 
+<%if logged_in? %>
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+  	<h3>commentaires</h3>
+  	<hr>
+<%= form_for([@recette, @commentaire], :html => {class:"form-horizontal",role:"form"}, local: true) do |form| %>
+<div class="form-group">
+  <div class="control-label col-md-2">
+    <%= form.label :description, "commentaire"  %>
+  </div>
+  <div class="col-md-8">
+    <%= form.text_area :description, id: :recette_description,rows:8, class:"form-control",placeholder:"entrez votre commentaire" %>
+  </div>
+</div>
+  <div class="form-group">
+    <div class="col-md-2 col-md-offset-2"><%= form.submit "envoyer le commentaire", class:"btn btn-primary btn-lg btn-xlarge" %></div>  
+  </div>
+  <hr>
+<% end %>
+  </div>
+</div>
+<%end%>
 
+<%if @recette.commentaires.any?%>
+<div class="row">
+	<div class="col-md-offset-2 col-md-8">
+		<h3>Précédents commentaires:</h3>
+		<div id="messages">
+			<%= render partial: 'commentaires/commentaires', object:@commentaires %>
+		</div>
+	</div>
+</div>
+<%else%>
+<div class="row">
+	<div class="col-md-offset-2 col-md-8">
+		<h3>Aucun commentaire posté </h3>
+	</div>
+</div>
+<%end%>

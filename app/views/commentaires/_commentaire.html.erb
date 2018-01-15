@@ -1,0 +1,15 @@
+<div class="row">
+	<div class="col-md-2">
+		<section class="chef_info center">
+			<%= gravatar_for commentaire.chef, size:60 %>
+		</section>
+	</div>
+	<div class="col-md-8 well">
+		<p><%= commentaire.description %></p>
+		<p><span class="quiet">
+			<small>Créé le : <%= time_ago_in_words commentaire.created_at %>
+				par : <%= commentaire.chef.chefname.titleize %>
+			</small>
+		</span></p>
+	</div>
+</div>

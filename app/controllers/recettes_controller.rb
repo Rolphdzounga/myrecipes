@@ -15,6 +15,8 @@ class RecettesController < ApplicationController
   # GET /recettes/1
   # GET /recettes/1.json
   def show
+    @commentaire = Commentaire.new
+    @commentaires = @recette.commentaires.paginate(page:params[:page],per_page:3)
     respond_to do |format|
       format.html
       format.json
