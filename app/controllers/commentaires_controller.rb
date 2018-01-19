@@ -29,15 +29,16 @@ class CommentairesController < ApplicationController
     #@commentaire = Commentaire.new(commentaire_params)
     @commentaire = @recette.commentaires.build commentaire_params
     @commentaire.chef = current_user
-    respond_to do |format|
+    
       if @commentaire.save
-        format.html { redirect_to recette_path(@recette),:flash =>{success:"commentaire posté avec succès..."} }
-        format.json { render :show, status: :created, location: @commentaire }
+        
+        ActionCable.server.broadcast "commentaires", render(partial: "commentaires/commentaire", object:@commentaire)
+        #format.html { redirect_to recette_path(@recette),:flash =>{success:"commentaire posté avec succès..."} }
+        
       else
-        format.html { redirect_back fallback_location: recettes_path,:flash =>{danger:"commentaire invalide"} }
-        format.json { render json: @commentaire.errors, status: :unprocessable_entity }
+        redirect_back fallback_location: recettes_path,:flash =>{danger:"commentaire invalide"}
       end
-    end
+   
   end
 
   # PATCH/PUT /commentaires/1

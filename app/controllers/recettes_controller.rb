@@ -84,7 +84,7 @@ class RecettesController < ApplicationController
     end
 
     def require_same_user
-      if logged_in? && current_user != @recette.chef && !current_user.admin?
+      if (!logged_in?) || (logged_in? && current_user != @recette.chef) || (!current_user.admin? if current_user) # AUTHENTIFIER + != USER DE LA RESS + != USER.ADMIN? 
         flash[:danger] = "Vous ne pouvez agir sur d'autres recettes en dehors des votres "
         redirect_to chefs_path
       end

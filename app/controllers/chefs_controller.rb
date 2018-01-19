@@ -31,6 +31,7 @@ class ChefsController < ApplicationController
     respond_to do |format|
       if @chef.save
         session[:chef_id] = @chef.id
+        cookies.signed[:chef_id] = @chef.id 
         format.html { redirect_to @chef, :flash =>{success:"Bienvenue #{@chef.chefname} sur Myrecipes App!"}}
         format.json { render :show, status: :created, location: @chef }
       else

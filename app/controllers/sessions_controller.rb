@@ -16,6 +16,7 @@ class SessionsController < ApplicationController
     chef = Chef.find_by email: params[:session][:email].downcase
     if chef && chef.authenticate(params[:session][:password])
       session[:chef_id] = chef.id 
+      cookies.signed[:chef_id] = chef.id 
       flash[:success] = "Bienvenue sur Cuisine du Gabon App!"
       redirect_to(chef_path chef)
     else
@@ -37,6 +38,6 @@ class SessionsController < ApplicationController
   private
     # Never trust parameters from the scary internet, only allow the white list through.
     def session_params
-      params.require(:session).permit(:email, :password)
+      params.require(:session).permit(:email, :password) # PARAMS = HASH - :SESSION = ELM HASH DE PARAMS
     end
 end
