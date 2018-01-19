@@ -193,7 +193,7 @@ GEM
     rb-fsevent (0.10.2)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
-    redis (4.0.1)
+    redis (3.3.3)
     ruby_dep (1.5.0)
     ruby_engine (1.0.1)
     ruby_info (1.0.1)
@@ -274,7 +274,7 @@ DEPENDENCIES
   pg
   puma (~> 3.7)
   rails (~> 5.1.4)
-  redis
+  redis (~> 3.0)
   sass-rails (~> 5.0)
   selenium-webdriver
   spring
