@@ -11,6 +11,8 @@ class ChefsController < ApplicationController
   # GET /chefs/1
   # GET /chefs/1.json
   def show
+    @message = Message.new
+    @messages = Message.all
     @recettes = @chef.recettes.paginate(page: params[:page],per_page:3)
   end
 

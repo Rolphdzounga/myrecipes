@@ -1,6 +1,7 @@
 class RecettesController < ApplicationController
-  before_action :set_recette, only: [:show, :edit, :update, :destroy]
-  before_action :require_user, except: [:index,:show]
+  before_action :set_recette, only: [:show, :edit, :update, :destroy,:like]
+  before_action :require_user_like, only: [:like]
+  before_action :require_user, except: [:index,:show,:like]
   before_action :require_same_user, only: [:edit,:update,:destroy]
   # GET /recettes
   # GET /recettes.json
@@ -12,6 +13,19 @@ class RecettesController < ApplicationController
     end
   end
 
+  def like
+    like = Like.create(like: params[:like], chef: current_user, recette: @recette)
+    
+    if like.valid?
+      # flash[:success] = "Your selection was succesful"
+      # redirect_to :back
+      redirect_back fallback_location: recettes_path,:flash =>{success:"Your selection was succesful"}
+    else
+      # flash[:danger] = "You can only like/dislike a recette once"
+      # redirect_to :back
+      redirect_back fallback_location: recettes_path,:flash =>{danger:"You can only like/dislike a recette once"}
+    end
+  end
   # GET /recettes/1
   # GET /recettes/1.json
   def show
@@ -73,6 +87,13 @@ class RecettesController < ApplicationController
   end
 
   private
+    def require_user_like
+      if !logged_in?
+        # flash[:danger] = "You must be logged in to perform that action"
+        # redirect_to :back
+        redirect_back fallback_location: recettes_path,:flash =>{danger:"You must be logged in to perform that action"}
+      end
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_recette
       @recette = Recette.find(params[:id])

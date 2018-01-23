@@ -26,6 +26,18 @@
 		<%end%>
 		<%= link_to "Retourner à la liste des recettes",recettes_path,class:"btn btn-xs btn-primary" %>
 	</div>
+
+	<div class="row liking">
+	  <div class="row col-md-8 col-md-offset-2">
+	    <%= link_to like_recette_path(@recette, like: true), method: :post do %>
+	      <i class="glyphicon glyphicon-thumbs-up"></i> 
+	    <% end %> ||
+	    <%= link_to like_recette_path(@recette, like: false), method: :post do %>
+	      <i class="glyphicon glyphicon-thumbs-down"></i> 
+	    <% end %>
+	  </div>
+	</div>
+
 </div>
 
 <%if logged_in? %>
